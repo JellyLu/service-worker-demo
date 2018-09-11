@@ -17,10 +17,34 @@ function imgLoad(imgJSON) {
 
         request.onerror = function () {
             reject(Error('There was a network error.'));
-        }
+        };
 
         request.send();
     });
 }
 
-var imgSection = document.querySelector('section')
+var imgSection = document.querySelector('section');
+
+window.onload = function () {
+    _.map(Gallery.images, function(image) {
+       imgLoad(image)
+           .then(function(arrayResponse) {
+               var myImage = document.createElement('img');
+               var myFigure = document.createElement('figure');
+               var myCaption = document.createElement('caption');
+               var imageURL = window.URL.createObjectURL(arrayResponse[0]);
+
+               myImage.src = imageURL;
+               myImage.setAttribute('alt', arrayResponse[1].alt);
+
+               myCaption.innerHTML = '<strong>' + arrayResponse[1].name + '</strong>: Taken by' + arrayResponse[1].credit;
+
+               imgSection.appendChild(myFigure);
+               myFigure.appendChild(myImage);
+               myFigure.appendChild(myCaption);
+           })
+           .catch(function(error) {
+               console.log(Error);
+           })
+    });
+}

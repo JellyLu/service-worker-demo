@@ -1,2 +1,3 @@
 .idea/
 service-worker-test.iml
+node_modules/
