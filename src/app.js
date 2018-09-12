@@ -26,6 +26,7 @@ function imgLoad(imgJSON) {
 var imgSection = document.querySelector('section');
 
 window.onload = function () {
+    Gallery.images.forEach(function(image) {
     _.map(Gallery.images, function(image) {
        imgLoad(image)
            .then(function(arrayResponse) {
@@ -44,7 +45,7 @@ window.onload = function () {
                myFigure.appendChild(myCaption);
            })
            .catch(function(error) {
-               console.log(Error);
+               console.log(error);
            })
     });
-}
+};
