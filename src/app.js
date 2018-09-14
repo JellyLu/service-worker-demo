@@ -1,5 +1,6 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker-demo/sw.js',
+    navigator.serviceWorker.register(
+        '/service-worker-demo/sw.js',
         {scope: '/service-worker-demo/'}
     ).then(function (reg) {
 
@@ -44,7 +45,7 @@ function imgLoad(imgJSON) {
 var imgSection = document.querySelector('section');
 
 window.onload = function () {
-    _.map(Gallery.images, function (image) {
+    _.map(Images, function (image) {
         imgLoad(image)
             .then(function (arrayResponse) {
                 var myImage = document.createElement('img');
