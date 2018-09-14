@@ -2,10 +2,8 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
       caches.open('v1').then(function(cache) {
         return cache.addAll([
-          '/service-worker-demo/src/',
           '/service-worker-demo/index.html',
           '/service-worker-demo/src/app.js',
-          '/service-worker-demo/src/image-list.js',
           '/service-worker-demo/src/images/cat.png',
           '/service-worker-demo/src/images/butterfly.png',
           '/service-worker-demo/src/images/rose.jpeg'
